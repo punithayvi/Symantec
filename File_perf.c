@@ -22,7 +22,8 @@ int main()
 
    /* Reading Input type */
    scanf("%d%*c",&choice);
-
+    
+   /* Array declaration for function pointers */
    void (*func_ptr[2])(char  *FileName) = {handleText, handleExeImage};
 
    switch(choice)
@@ -44,7 +45,8 @@ int main()
 
             printf("Enter name of file to copy\n");
             scanf("%s",&source_file);
-
+            
+            /* Dynamic function calls using array index */ 
             (*func_ptr[(int)iFileType-1])(source_file);
             break;
         default:
