@@ -1,0 +1,19 @@
+#!/usr/bin/env expect
+spawn ./a.out
+expect "Enter the type of input : 1 <Keyboard>, 2 <File>"
+send "1\n"
+expect "Enter contents to store in file. Enter Ctrl+C at the end of input data :"
+send "Punitha123!@# $%\n"
+Kill -9 `pgrep a.out`
+expect "Got control character. Considering it as the end of user input. Please Enter"
+send "\n"
+interact
+spawn ./a.out
+expect "Enter the type of input : 1 <Keyboard>, 2 <File>"
+send "2\n"
+expect "Enter the type of file : 1 <Text>, 2<exe>"
+send "1\n"
+expect "Enter name of file to copy"
+send "File.c"
+expect "File copied successfully."
+interact
